@@ -37,6 +37,7 @@ with open(file_path) as csv_file:
             for idx, item in enumerate(row):
                 obj[headers[idx]] = item
             obj['location'] = firestore.GeoPoint(float(obj['lat']), float(obj['long'])) #geopoint transformation
+            obj['redemptionLimit'] = int(obj['redemptionLimit']) #str to int
             obj.pop('lat')
             obj.pop('long')
             obj.pop('geopy')
